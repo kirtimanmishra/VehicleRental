@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 #include "VehicleType.cpp"
-#include "Location.cpp"
 #include "../User/User.cpp"
 #include "VehicleStatus.cpp"
 
