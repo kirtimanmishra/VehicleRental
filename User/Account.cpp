@@ -10,6 +10,7 @@ class Account
   Address address;
 
 public:
+  Account() {}
   Account(string email, string phone)
   {
     this->email = email;
@@ -19,5 +20,9 @@ public:
   {
     this->address = address;
     return address;
+  }
+  string getEmail()
+  {
+    return email;
   }
 };
