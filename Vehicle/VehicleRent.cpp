@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 #pragma once
-#include "VehicleType.cpp"
+#include "Vehicle.cpp"
+#include "Car.cpp"
+
 using namespace std;
 
 class VehicleRent
@@ -15,5 +17,10 @@ public:
     VehicleRents[SUV] = 1.5;
     VehicleRents[CAR] = 1.25;
     VehicleRents[BIKE] = 1.0;
+  }
+  float getRate(Vehicle vehicle)
+  {
+    float rate = VehicleRents[vehicle.getVehicleType()];
+    return rate;
   }
 };

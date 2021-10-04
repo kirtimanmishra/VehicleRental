@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include "Vehicle/Vehicle.cpp"
+#include "Vehicle.cpp"
 
 #pragma once
 using namespace std;
@@ -7,7 +7,8 @@ using namespace std;
 class Van : public Vehicle
 {
   string licenceNumber;
+  int barCode;
 
 public:
-  Van(string licenceNumber) : Vehicle(licenceNumber, VAN) {}
+  Van(string licenceNumber) : Vehicle(licenceNumber, VAN, barCode) {}
 };

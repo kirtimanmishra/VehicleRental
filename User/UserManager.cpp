@@ -8,6 +8,7 @@ class UserManager
   unordered_map<string, User> Users;
 
 public:
+  // 1) Register a User
   // url: /Resister/User {User} METHOD: POST
   User AddUser(User user)
   {

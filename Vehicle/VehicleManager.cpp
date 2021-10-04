@@ -7,7 +7,7 @@ using namespace std;
 class VehicleManager
 {
   unordered_map<VehicleType, vector<Vehicle>> carStore;
-  vector<Vehicle> rentedCars;
+  vector<Vehicle> rentedVehicles;
 
 public:
   VehicleManager()
@@ -17,9 +17,10 @@ public:
     this->carStore[SUV] = {};
     this->carStore[VAN] = {};
     this->carStore[BIKE] = {};
-    this->rentedCars = {};
+    this->rentedVehicles = {};
   }
 
+  // 2) Register a Vehicle
   // url: /Resister/Vehicle {User} METHOD: POST
   Vehicle addVehicle(Vehicle vehicle)
   {
@@ -29,5 +30,36 @@ public:
     string parkingStallNumber = to_string(size);
     vehicle.setParkingStallNumber(parkingStallNumber);
     return vehicle;
+  }
+  vector<Vehicle> availableVehicles(VehicleType vehicleType)
+  {
+    vector<Vehicle> vehicles = carStore[vehicleType];
+    vector<Vehicle> freeVechicles;
+    for (int i = 0; i < vehicles.size(); i++)
+    {
+      Vehicle currentVehicle = vehicles[i];
+      if (currentVehicle.checkStatus())
+        freeVechicles.push_back(currentVehicle);
+    }
+    return freeVechicles;
+  }
+  Vehicle bookVehicle(string bookingId, VehicleType vehicleType, time_t accessTime, time_t duration, string userEmail)
+  {
+    vector<Vehicle> vehicles = carStore[vehicleType];
+    if (vehicles.size() == 0)
+    {
+      cout << "No vehicles available " << endl;
+      Vehicle Vehicle;
+    }
+    Vehicle rentedVehicle = carStore[vehicleType].front();
+    auto it = carStore[vehicleType].begin();
+    carStore[vehicleType].erase(it);
+    rentedVehicle.startTrip(bookingId, accessTime, duration, userEmail);
+    rentedVehicles.push_back(rentedVehicle);
+    return rentedVehicle;
+  }
+  vector<Vehicle> getRentedVehicles()
+  {
+    return rentedVehicles;
   }
 };
