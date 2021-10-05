@@ -69,10 +69,10 @@ public:
   {
     isAvailable = true;
     vehicleStatus = PARKED;
-    this->accessTime = 0;
-    this->duration = 0;
-    this->userEmail = "";
-    this->bookingId = "";
+    accessTime = 0;
+    duration = 0;
+    userEmail = "";
+    bookingId = "";
   }
   string getUser()
   {
@@ -85,5 +85,9 @@ public:
   string getLicenceNumber()
   {
     return licenceNumber;
+  }
+  VehicleStatus getVehicleStatus()
+  {
+    return vehicleStatus;
   }
 };

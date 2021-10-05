@@ -78,13 +78,14 @@ public:
   {
     VehicleRent vehicleRent;
     float amout = vehicleRent.getRate(vehicle);
+    cout << "vehicle type rate " << amout << endl;
     return amout * duration;
   }
   // 6) Return a Vehicle
   // url: /Return/vehicle/:vehicleId METHOD: GET
   Vehicle returnVehicle(Vehicle vehicle)
   {
-    vehicleManager.returnsVehicle(vehicle);
+    vehicle = vehicleManager.returnsVehicle(vehicle);
     return vehicle;
   }
   // 7) List of Rented Vehicles

@@ -27,6 +27,7 @@ public:
     VehicleType vehicleType = vehicle.getVehicleType();
     int size = carStore[vehicleType].size();
     size++;
+    cout << "Size before-booking/returning vehicleType size  " << size << endl;
     string parkingStallNumber = to_string(vehicleType) + to_string(size);
     vehicle.setParkingStallNumber(parkingStallNumber);
     carStore[vehicleType].push_back(vehicle);
@@ -57,8 +58,10 @@ public:
     Vehicle rentedVehicle = carStore[vehicleType].front();
     auto it = carStore[vehicleType].begin();
     carStore[vehicleType].erase(it);
+    cout << "Size after booking vehicleType size " << carStore[vehicleType].size() << endl;
     rentedVehicle.startTrip(bookingId, accessTime, duration, userEmail);
     rentedVehicles.push_back(rentedVehicle);
+    cout << "Rented Vehicle size " << rentedVehicles.size() << endl;
     return rentedVehicle;
   }
   vector<Vehicle> getRentedVehicles()
@@ -79,6 +82,7 @@ public:
       }
     }
     rentedVehicles.erase(it + pos);
+    cout << "rented Vehicles size " << rentedVehicles.size() << endl;
     addVehicle(vehicle);
     return vehicle;
   }

@@ -50,9 +50,8 @@ int main()
   vehicleManager.addVehicle(van);
   vehicleManager.addVehicle(bike);
 
-  // DRIVER: 3) List of Available Vehicles
+  // 3) DRIVER: List of Available Vehicles
   // url: /Vehicles/availableVehicle {vehicleStatus:available, vehicleType:vehicleType} METHOD: GET
-
   Booking booking("booking 12345", vehicleManager, vamsi, CAR, 123, 20);
   vector<Vehicle> avaialblevehicles = booking.availableVehicles();
   cout << "Available vehicles size " << avaialblevehicles.size() << endl;
@@ -60,4 +59,20 @@ int main()
   {
     cout << "vehicle licence " << avaialblevehicles[i].getLicenceNumber() << " vehicle type " << avaialblevehicles[i].getVehicleType() << " vehicle parkingStallNumber " << avaialblevehicles[i].getParkingStallNumber() << endl;
   }
+
+  // 4) DRIVER: Book a Vehicle
+  // url: /Book/vehicle METHOD: GET
+  Vehicle bookedVehicle = booking.bookVehicle();
+  cout << "printing booked Vehicle " << endl;
+  cout << "parking stall no " << bookedVehicle.getParkingStallNumber() << " licence no " << bookedVehicle.getLicenceNumber() << " booking id " << bookedVehicle.getBookingDetails() << " booked user " << bookedVehicle.getUser() << " vehicle type " << bookedVehicle.getVehicleType() << " vehicle avaialable " << bookedVehicle.checkStatus() << " vehicle status " << bookedVehicle.getVehicleStatus() << endl;
+
+  // 5) DRIVER: Calculate Amount
+  // url: /Amount/vehicle/:vehicleId METHOD: GET
+  float amount = booking.paymentAmout(bookedVehicle);
+  cout << "Amount to be paid " << amount << endl;
+
+  // 6) DRIVER: Return a Vehicle
+  // url: /Return/vehicle/:vehicleId METHOD: GET
+  bookedVehicle = booking.returnVehicle(bookedVehicle);
+  cout << "parking stall no " << bookedVehicle.getParkingStallNumber() << " licence no " << bookedVehicle.getLicenceNumber() << " booking id " << bookedVehicle.getBookingDetails() << " booked user " << bookedVehicle.getUser() << " vehicle type " << bookedVehicle.getVehicleType() << " vehicle avaialable " << bookedVehicle.checkStatus() << " vehicle status " << bookedVehicle.getVehicleStatus() << endl;
 }
