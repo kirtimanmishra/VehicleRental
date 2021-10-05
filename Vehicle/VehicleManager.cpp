@@ -25,12 +25,14 @@ public:
   Vehicle addVehicle(Vehicle vehicle)
   {
     VehicleType vehicleType = vehicle.getVehicleType();
-    carStore[vehicleType].push_back(vehicle);
     int size = carStore[vehicleType].size();
-    string parkingStallNumber = to_string(size);
+    size++;
+    string parkingStallNumber = to_string(vehicleType) + to_string(size);
     vehicle.setParkingStallNumber(parkingStallNumber);
+    carStore[vehicleType].push_back(vehicle);
     return vehicle;
   }
+
   vector<Vehicle> availableVehicles(VehicleType vehicleType)
   {
     vector<Vehicle> vehicles = carStore[vehicleType];
@@ -43,6 +45,7 @@ public:
     }
     return freeVechicles;
   }
+
   Vehicle bookVehicle(string bookingId, VehicleType vehicleType, time_t accessTime, time_t duration, string userEmail)
   {
     vector<Vehicle> vehicles = carStore[vehicleType];

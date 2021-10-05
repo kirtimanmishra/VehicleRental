@@ -6,9 +6,7 @@ using namespace std;
 
 class Van : public Vehicle
 {
-  string licenceNumber;
-  int barCode;
 
 public:
-  Van(string licenceNumber) : Vehicle(licenceNumber, VAN, barCode) {}
+  Van(string licenceNumber, int barCode) : Vehicle(licenceNumber, VAN, barCode) {}
 };

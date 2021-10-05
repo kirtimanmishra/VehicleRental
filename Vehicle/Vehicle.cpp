@@ -45,8 +45,7 @@ public:
   }
   string getParkingStallNumber()
   {
-    string str = to_string(vehicleType) + parkingStallNumber;
-    return str;
+    return parkingStallNumber;
   }
   void setUser(string userEmail)
   {

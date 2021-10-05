@@ -21,4 +21,8 @@ public:
     Users[email] = user;
     return user;
   }
+  int UsersSize()
+  {
+    return Users.size();
+  }
 };

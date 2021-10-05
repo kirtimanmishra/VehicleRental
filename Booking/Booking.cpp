@@ -4,6 +4,7 @@
 #include "../User/User.cpp"
 #include "../Vehicle/VehicleType.cpp"
 #include "../Vehicle/VehicleRent.cpp"
+#include "../Vehicle/Car.cpp"
 
 #pragma once
 using namespace std;
@@ -25,17 +26,44 @@ public:
     this->vehicleManager = vehicleManager;
     this->user = user;
     this->vehicleType = vehicleType;
-
     this->accessTime = accessTime;
     this->duration = duration;
   }
+
   // 3) List of Available Vehicles
   // url: /Vehicles/availableVehicle {vehicleStatus:available, vehicleType:vehicleType} METHOD: GET
   vector<Vehicle> availableVehicles()
   {
-    vector<Vehicle> freeVechicles = vehicleManager.availableVehicles(vehicleType);
+    vector<Vehicle> freeVechicles;
+    vector<Vehicle> freeCars = vehicleManager.availableVehicles(CAR);
+    vector<Vehicle> freeSuv = vehicleManager.availableVehicles(SUV);
+    vector<Vehicle> freeBike = vehicleManager.availableVehicles(BIKE);
+    vector<Vehicle> freeTruck = vehicleManager.availableVehicles(TRUCK);
+    vector<Vehicle> freeVan = vehicleManager.availableVehicles(VAN);
+
+    for (auto it : freeCars)
+    {
+      freeVechicles.push_back(it);
+    }
+    for (auto it : freeSuv)
+    {
+      freeVechicles.push_back(it);
+    }
+    for (auto it : freeBike)
+    {
+      freeVechicles.push_back(it);
+    }
+    for (auto it : freeTruck)
+    {
+      freeVechicles.push_back(it);
+    }
+    for (auto it : freeVan)
+    {
+      freeVechicles.push_back(it);
+    }
     return freeVechicles;
   }
+
   // 4) Book a Vehicle
   // url: /Book/vehicle METHOD: GET
   Vehicle bookVehicle()
@@ -76,7 +104,7 @@ public:
       return res;
     }
     cout << "Vehicle on Free " << endl;
-    string parkingNumber = vehicle.getParkingStallNumber();
-    return parkingNumber;
+    // string parkingNumber = vehicle.getParkingStallNumber();
+    return "parkingNumber";
   }
 };
