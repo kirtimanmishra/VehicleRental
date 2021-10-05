@@ -56,7 +56,7 @@ public:
   // url: /Return/vehicle/:vehicleId METHOD: GET
   Vehicle returnVehicle(Vehicle vehicle)
   {
-    vehicle.endTrip();
+    vehicleManager.returnsVehicle(vehicle);
     return vehicle;
   }
   // 7) List of Rented Vehicles

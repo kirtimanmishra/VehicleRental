@@ -83,4 +83,8 @@ public:
   {
     return bookingId;
   }
+  string getLicenceNumber()
+  {
+    return licenceNumber;
+  }
 };

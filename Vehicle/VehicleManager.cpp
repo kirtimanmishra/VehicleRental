@@ -62,4 +62,21 @@ public:
   {
     return rentedVehicles;
   }
+  Vehicle returnsVehicle(Vehicle vehicle)
+  {
+    int pos;
+    vehicle.endTrip();
+    auto it = rentedVehicles.begin();
+    for (int i = 0; i < rentedVehicles.size(); i++)
+    {
+      if (rentedVehicles[i].getLicenceNumber() == vehicle.getLicenceNumber())
+      {
+        pos = i;
+        break;
+      }
+    }
+    rentedVehicles.erase(it + pos);
+    addVehicle(vehicle);
+    return vehicle;
+  }
 };
