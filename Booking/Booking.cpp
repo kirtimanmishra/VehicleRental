@@ -78,7 +78,6 @@ public:
   {
     VehicleRent vehicleRent;
     float amout = vehicleRent.getRate(vehicle);
-    cout << "vehicle type rate " << amout << endl;
     return amout * duration;
   }
   // 6) Return a Vehicle
@@ -100,12 +99,10 @@ public:
   {
     if (!vehicle.checkStatus())
     {
-      cout << "Vehicle on Ride " << endl;
       string res = vehicle.getBookingDetails() + "  " + vehicle.getUser();
       return res;
     }
-    cout << "Vehicle on Free " << endl;
-    // string parkingNumber = vehicle.getParkingStallNumber();
-    return "parkingNumber";
+    string parkingNumber = vehicle.getParkingStallNumber();
+    return parkingNumber;
   }
 };

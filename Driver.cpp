@@ -71,8 +71,27 @@ int main()
   float amount = booking.paymentAmout(bookedVehicle);
   cout << "Amount to be paid " << amount << endl;
 
+  // 7) DRIVER: List of Rented Vehicles
+  // url: /Vehicles/rentedVehicle METHOD: GET
+  vector<Vehicle> rentedVehicle = booking.rentedVehicles();
+  cout << " ** printing rented vehicle ** " << endl;
+  for (int i = 0; i < rentedVehicle.size(); i++)
+  {
+    Vehicle currentRentedVehicle = rentedVehicle[i];
+    cout << "parking stall no " << bookedVehicle.getParkingStallNumber() << " licence no " << bookedVehicle.getLicenceNumber() << " booking id " << bookedVehicle.getBookingDetails() << " booked user " << bookedVehicle.getUser() << " vehicle type " << bookedVehicle.getVehicleType() << " vehicle avaialable " << bookedVehicle.checkStatus() << " vehicle status " << bookedVehicle.getVehicleStatus() << endl;
+  }
+
+  // 8) DRIVER: Locate a vehicle
+  // url: /Locate/vehicle/:vehicleId
+
+  string locateVehicleStatus = booking.locateVehicleDetails(bookedVehicle);
+  cout << "Printing status of booked vehicle " << locateVehicleStatus << endl;
+
   // 6) DRIVER: Return a Vehicle
   // url: /Return/vehicle/:vehicleId METHOD: GET
   bookedVehicle = booking.returnVehicle(bookedVehicle);
   cout << "parking stall no " << bookedVehicle.getParkingStallNumber() << " licence no " << bookedVehicle.getLicenceNumber() << " booking id " << bookedVehicle.getBookingDetails() << " booked user " << bookedVehicle.getUser() << " vehicle type " << bookedVehicle.getVehicleType() << " vehicle avaialable " << bookedVehicle.checkStatus() << " vehicle status " << bookedVehicle.getVehicleStatus() << endl;
+
+  locateVehicleStatus = booking.locateVehicleDetails(bookedVehicle);
+  cout << "Printing status of used vehicle " << locateVehicleStatus << endl;
 }
