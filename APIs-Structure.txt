@@ -1,0 +1,49 @@
+========  DESIGN AN Vehicle Rental =========
+
+Requirements
+1) User resgistration
+2) Vehicle resgistration
+3) Return vehicles which are free for given time duration by user
+4) Book a vehicle. Parking Stall Number locate the vehicle. 
+    Given a vehicle, startDate and duration, book vehicle for that time.   
+5) Calculate amount to pay. Given a booking which contains vehicle, user, time frame for booking etc, calculate total amount the user needs to pay. 
+    Assume any rate of the vehicle.
+6) Return the vehicle. After booking complete, mark the vehicle as returned/available and end the booking when the user returns the vehicle.
+7) List of rented out vehicles: List all the rented out vehicles with their current tenant, due date, etc.
+8) Locate a vehicle: Return current status of vehicle. If it is rented, return the booking and user. 
+    If free, return the parking lot number where the vehicle is parked.
+
+1) API design
+ 1) url: /Resister/User {User} METHOD: POST     --> Done
+ 2) url: /Resister/Vehicle {User} METHOD: POST  --> Done
+ 3) url: /Vehicles/availableVehicle {vehicleStatus:available, vehicleType:vehicleType,timeFrame:any} METHOD: GET
+ 4) url: /Book/vehicle METHOD: GET
+ 5) url: /Amount/vehicle/:vehicleId METHOD: GET
+ 6) url: /Return/vehicle/:vehicleId METHOD: GET
+ 7) url: /Vehicles/rentedVehicle METHOD: GET
+ 8) url: /Locate/vehicle/:vehicleId METHOD: GET
+
+
+2) Table + LLD
+
+THUMB RULE: FOR 1 WORK, THERE IS 1 SERVICE AND 1 TABLE(at MAX)
+
+1) USER SERVICE
+============
+TABLE USER:
+id email phone
+
+2) VEHICLE SERVICE
+=============
+TABLE VEHICLETYPE (METADATA)
+id type rate
+
+TABLE VEHICLE
+id licenceNo vehicleTypeId(FK) isAvailable userId(FK)
+
+
+3) 4) 5) 6) 7) 8) BOOKING SERVICE
+=============
+
+For 3) 4) 5) 6) 7) 8), you can take 5 microservice also, depending what you want.
+But for simplicity, I am taking only 1 microservice.
