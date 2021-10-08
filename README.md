@@ -29,7 +29,9 @@ vehicle.
 the booking when the user returns the vehicle.
 
 6. List of rented out vehicles: List all the rented out vehicles with their current tenant, due
-date, etc.7. Locate a vehicle: Return current status of vehicle. If it is rented, return the booking and user. If free, return the parking lot number where the vehicle is parked.
+date, etc.
+
+7. Locate a vehicle: Return current status of vehicle. If it is rented, return the booking and user. If free, return the parking lot number where the vehicle is parked.
 
 Other Notes:
 1. Use local IDE to code. You can use any language, any IDE/editor.
